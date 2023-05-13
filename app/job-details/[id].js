@@ -5,6 +5,8 @@ import { Company, JobAbout, JobFooter, JobTabs, Specifics, ScreenHeaderBtn } fro
 import { COLORS, SIZES, icons, images } from '../../constants';
 import useFetch from '../../hooks/useFetch';
 
+const tabs = ['About', 'Qualifications', 'Responsibilities'];
+
 const JobDetails = () => {
 	const params = useSearchParams();
 	const router = useRouter();
@@ -18,6 +20,21 @@ const JobDetails = () => {
 		refetch();
 		setRefreshing(false);
 	}, []);
+
+	const [activeTab, setActiveTab] = useState(tabs[0]);
+
+	const displayTab = (tab, data) => {
+		switch (tab) {
+			case 'About':
+				return <JobAbout data={data} />;
+			case 'Qualifications':
+				return <Specifics title="Qualifications" points={data[0].job_highlights?.qualifications ?? ['N/A']}/>;
+			case 'Responsibilities':
+				return <Specifics data={data} />;
+			default:
+				return <JobAbout data={data} />;
+		}
+	};
 
 	return (
 		<SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
@@ -66,9 +83,14 @@ const JobDetails = () => {
 							logo={data[0].employer_logo}
 							title={data[0].job_title}
 							company={data[0].employer_name}
-							location={data[0].job_company}
+							location={data[0].job_country}
 						/>
-						<JobTabs data={data} />
+						<JobTabs
+							tabs={tabs}
+							activeTab={activeTab}
+							setActiveTab={setActiveTab}
+						/>
+						{displayTab(activeTab, data[0])}
 					</View>
 				)}
 			</ScrollView>

@@ -13,34 +13,34 @@ const useFetch = (endpoint, query) => {
 			...query,
 		},
 		headers: {
-			'X-RapidAPI-Key': '2960f4b329msh0818877eec09e84p17f637jsn95b32d5efd67',
+			'X-RapidAPI-Key': '5e79f0888amsh05f6da8af53c93cp1f73d2jsn73519964f562',
 			'X-RapidAPI-Host': 'jsearch.p.rapidapi.com',
 		},
 	};
-    
-    const fetchData = async () => {
-        setLoading(true);
-        try {
-            const response = await axios.request(options);
-            setData(response.data.data);
-            setLoading(false);
-        } catch (error) {
-            setError(error);
-        } finally {
-            setLoading(false);
-        }
-    };
 
-    useEffect(() => {
-        fetchData();
-    }, []);
+	const fetchData = async () => {
+		setLoading(true);
+		try {
+			const response = await axios.request(options);
+			setData(response.data.data);
+			setLoading(false);
+		} catch (error) {
+			setError(error);
+		} finally {
+			setLoading(false);
+		}
+	};
 
-    const refetch = () => {
-        setLoading(true);
-        fetchData();
-    }
+	useEffect(() => {
+		fetchData();
+	}, []);
 
-    return { data, loading, error, refetch };
+	const refetch = () => {
+		setLoading(true);
+		fetchData();
+	};
+
+	return { data, loading, error, refetch };
 };
 
 export default useFetch;
