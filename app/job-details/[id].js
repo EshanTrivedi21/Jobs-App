@@ -23,16 +23,26 @@ const JobDetails = () => {
 
 	const [activeTab, setActiveTab] = useState(tabs[0]);
 
-	const displayTab = (tab, data) => {
-		switch (tab) {
+	const displayTab = () => {
+		switch (activeTab) {
 			case 'About':
-				return <JobAbout data={data} />;
+				return <JobAbout info={data[0].job_description ?? 'No Data Provided'} />;
 			case 'Qualifications':
-				return <Specifics title="Qualifications" points={data[0].job_highlights?.qualifications ?? ['N/A']}/>;
+				return (
+					<Specifics
+						title='Qualifications'
+						points={data[0].job_highlights?.Qualifications ?? ['Not Provided']}
+					/>
+				);
 			case 'Responsibilities':
-				return <Specifics data={data} />;
+				return (
+					<Specifics
+						title='Qualifications'
+						points={data[0].job_highlights?.Responsibilities ?? ['Not Provided']}
+					/>
+				);
 			default:
-				return <JobAbout data={data} />;
+				break;
 		}
 	};
 
@@ -71,6 +81,7 @@ const JobDetails = () => {
 				{loading ? (
 					<ActivityIndicator
 						size='large'
+						style={{ marginTop: SIZES.xLarge }}
 						color={COLORS.primary}
 					/>
 				) : error ? (
@@ -90,7 +101,7 @@ const JobDetails = () => {
 							activeTab={activeTab}
 							setActiveTab={setActiveTab}
 						/>
-						{displayTab(activeTab, data[0])}
+						{displayTab()}
 					</View>
 				)}
 			</ScrollView>

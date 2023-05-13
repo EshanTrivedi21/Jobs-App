@@ -16,7 +16,7 @@ const Tabs = ({tabs, activeTab, setActiveTab}) => {
               setActiveTab(item)
             }}
           >
-            <Text style={styles.btnText(item,activeTab)}>{item}</Text>
+            <Text style={styles.btnText(item, activeTab)}>{item}</Text>
           </TouchableOpacity>
         )}
         keyExtractor={(item) => item}
