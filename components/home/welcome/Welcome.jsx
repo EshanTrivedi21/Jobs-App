@@ -14,7 +14,7 @@ const Welcome = () => {
 	const [activeJobType, setActiveJobType] = useState(jobTypes[0]);
 
 	return (
-		<View>
+		<View style={styles.wrapper}>
 			<View style={styles.container}>
 				<Text style={styles.userName}>Hello Eshan</Text>
 				<Text style={styles.welcomeMessage}>Find your Perfect Job</Text>

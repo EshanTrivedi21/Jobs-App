@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
   container: (selectedJob, item) => ({
     width: 250,
     padding: SIZES.xLarge,
-    backgroundColor: selectedJob === item.job_id ? COLORS.primary : "#FFF",
+    backgroundColor: selectedJob === item.job_id ? COLORS.primary : COLORS.white,
     borderRadius: SIZES.medium,
     justifyContent: "space-between",
     ...SHADOWS.medium,
@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     height: 50,
     flexDirection: "row",
     borderRadius: SIZES.medium,
-    justifyContent: "start",
+    justifyContent: "flex-start",
     alignItems: "center",
     gap: SIZES.small,
   }),

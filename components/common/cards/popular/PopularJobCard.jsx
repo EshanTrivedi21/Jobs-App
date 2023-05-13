@@ -22,7 +22,7 @@ const PopularJobCard = ({ item, selectedJob, handleCardPress }) => {
 					style={styles.companyName}
 					numberOfLines={1}
 				>
-					{item?.employer_name}
+					{item?.employer_name.slice(0,20) + (item?.employer_name.length > 20 ? '..' : '')}
 				</Text>
 			</TouchableOpacity>
 			<View style={styles.infoContainer}>
