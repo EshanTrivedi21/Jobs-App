@@ -24,8 +24,8 @@ const Company = ({ logo, title, company, location }) => {
 						source={icons.location}
 						style={styles.locationImage}
 						resizeMode='contain'
-          />
-          <Text style={styles.locationName}>{location}</Text>
+					/>
+					<Text style={styles.locationName}>{location}</Text>
 				</View>
 			</View>
 		</View>
