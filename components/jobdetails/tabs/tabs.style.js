@@ -3,24 +3,25 @@ import { StyleSheet } from "react-native";
 import { COLORS, SHADOWS, SIZES } from "../../../constants";
 
 const styles = StyleSheet.create({
-  container: {
-    marginTop: SIZES.xLarge,
-    marginBottom: SIZES.small / 2,
-  },
-  btn: (name, activeTab) => ({
-    paddingVertical: SIZES.medium,
-    paddingHorizontal: SIZES.xLarge,
-    backgroundColor: name === activeTab ? COLORS.primary : "#F3F4F8",
-    borderRadius: SIZES.medium,
-    marginLeft: 2,
-    ...SHADOWS.medium,
-    shadowColor: COLORS.white,
-  }),
-  btnText: (name, activeTab) => ({
-    fontFamily: "DMMedium",
-    fontSize: SIZES.small,
-    color: name === activeTab ? "#C3BFCC" : "#AAA9B8",
-  }),
+	container: {
+		marginTop: SIZES.xLarge,
+		marginBottom: SIZES.small / 2,
+	},
+	btn: (name, activeTab) => ({
+		paddingVertical: 8,
+		paddingHorizontal: SIZES.medium,
+		borderRadius: SIZES.medium,
+		marginLeft: 0,
+		...SHADOWS.medium,
+		shadowColor: COLORS.white,
+		borderWidth: 1,
+		borderColor: activeTab === name ? COLORS.secondary : COLORS.gray2,
+	}),
+	btnText: (name, activeTab) => ({
+		fontFamily: 'DMMedium',
+		fontSize: SIZES.small,
+		color: activeTab === name ? COLORS.secondary : COLORS.gray2,
+	}),
 });
 
 export default styles;
