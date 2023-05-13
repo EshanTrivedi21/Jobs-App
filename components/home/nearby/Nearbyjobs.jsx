@@ -5,8 +5,8 @@ import { useRouter } from 'expo-router';
 import styles from './nearbyjobs.style';
 import { SIZES, COLORS } from '../../../constants';
 
-import PopularJobCard from '../../common/cards/popular/PopularJobCard';
 import useFetch from '../../../hooks/useFetch';
+import NearbyJobCard from '../../common/cards/nearby/NearbyJobCard';
 
 const Nearbyjobs = () => {
 	const router = useRouter();
@@ -33,13 +33,15 @@ const Nearbyjobs = () => {
 				) : error ? (
 					<Text>Something went wrong</Text>
 				) : (
-					<FlatList
-						data={data}
-						renderItem={({ item }) => <PopularJobCard item={item} />}
-						keyExtractor={(item) => item?.job_id}
-						contentContainerStyle={{ columnGap: SIZES.medium }}
-						horizontal
-					/>
+					data?.map((item) => (
+						<NearbyJobCard
+							item={item}
+							key={`nearby-job-${item.job_id}`}
+							handleNavigate={() => {
+								router.push(`/job-details/${item.job_id}`);
+							}}
+						/>
+					))
 				)}
 			</View>
 		</View>
