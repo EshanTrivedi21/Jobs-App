@@ -16,7 +16,9 @@ const Search = () => {
         setRefreshing(true);
         refetch();
 		setRefreshing(false);
-	};
+    };
+    
+    console.log(params)
 
 	return (
 		<SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>

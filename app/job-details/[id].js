@@ -11,6 +11,8 @@ const JobDetails = () => {
 	const params = useSearchParams();
 	const router = useRouter();
 
+	console.log(params);
+
 	const { data, loading, error, refetch } = useFetch('job-details', { job_id: params.id });
 
 	const [refreshing, setRefreshing] = useState(false);
